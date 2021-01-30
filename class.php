@@ -1,9 +1,9 @@
 <?php 
     class MyApp
     {
-        private $server = "mysql:host=localhost;dbname=jobfindph_db";
+        private $server = "mysql:host=localhost;dbname=jobseekerapp";
         private $user = "root";
-        private $pass = "";
+        private $pass = "preciousangel24";
         private $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
         protected $con;
 
@@ -22,7 +22,7 @@
         }
         public function getUsers(){
             $connection = $this->openConnection();
-            $stmt = $connection->prepare("SELECT * FROM user_accounts");
+            $stmt = $connection->prepare("SELECT * FROM user_login");
             $stmt->execute();
             $users = $stmt->fetchAll();
             $userCount = $stmt->rowCount();
@@ -40,11 +40,11 @@
             {
             
                 $password = md5($_POST['password']);
-                $username = md5($_POST['email']);
+                $username = $_POST['email'];
                
 
                 $connection = $this->openConnection();
-                $stmt = $connection->prepare("SELECT * FROM user_accounts WHERE email = ? AND password = ?");
+                $stmt = $connection->prepare("SELECT * FROM user_login WHERE email = ? AND password = ?");
                 
                 $stmt->execute([$username,$password]);
                 $user = $stmt->fetch();
@@ -60,9 +60,9 @@
                         echo "You Log in as ".$user['usertype'];
                         header("Location: applicant.php");
                     }
-                    if($user['usertype'] == "employer"){
+                    if($user['usertype'] == "employee"){
                         echo "You Log in as ".$user['usertype'];
-                        header("Location: employer.php");
+                        header("Location: employee.php");
                     }
                     
                 }else{
@@ -80,7 +80,7 @@
                     "usertype" => $array['usertype']
                     
             );
-            return $_SESSION['userdata'];
+            return $_SESSION['userdata']; 
         }
         public function get_userdata()
         {
@@ -105,7 +105,7 @@
         public function check_user_exist($email)
         {
             $connection = $this->openConnection();
-            $stmt = $connection->prepare("SELECT * FROM user_accounts WHERE email = ?");
+            $stmt = $connection->prepare("SELECT * FROM user_login WHERE email = ?");
             $stmt->execute([$email]);
             $total = $stmt->rowCount();
 
@@ -116,16 +116,16 @@
 
             if(isset($_POST['add'])){
 
-                $fname = md5($_POST['first_name']);
-                $lname = md5($_POST['last_name']);
-                $email = md5($_POST['email']);
-                $phone = md5($_POST['phone']);
+                $fname = $_POST['first_name'];
+                $lname = $_POST['last_name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
                 $password = md5($_POST['password']);
                 $usertype = $_POST['usertype'];
                
                 if($this->check_user_exist($email)==0){
                     $connection = $this->openConnection();
-                    $stmt = $connection->prepare("INSERT INTO user_accounts (`first_name`,`last_name`,`email`,`phone`,`password`,`usertype`)VALUES(?,?,?,?,?,?)");
+                    $stmt = $connection->prepare("INSERT INTO user_login (`first_name`,`last_name`,`email`,`phone`,`password`,`usertype`)VALUES(?,?,?,?,?,?)");
                     $stmt->execute([$fname,$lname,$email,$phone,$password,$usertype]);
                    
                 }else{
@@ -133,7 +133,31 @@
                 }  
             }
         }
+        public function changePass()
+        {
+            if(isset($_POST['change'])){
+              
+                $password = md5($_POST['password']);
+                $newpassword = md5($_POST['newpassword']);
+               /* $id =$_SESSION['id'];*/
+                /*$rnewpassword = md5($_POST['rnewpassword']);*/
 
+                $connection = $this->openConnection();
+                $stmt = $connection->prepare("SELECT * FROM user_login WHERE password=?");
+  
+                $stmt->execute(array($_POST['password']));
+                $user = $stmt->fetch();
+                $total = $stmt->rowCount();
+
+                if($total > 0){
+                    $stmt = $connection->prepare("UPDATE user_login set password = ? WHERE id=?");
+                $stmt->execute(array($_POST['data']['newpassword'], $_POST['data']['id']));
+                    echo "Password Change Successfully!";
+                }else{
+                    echo "Password Does not match!";
+                }
+            }
+        }
         public function companyProfile()
         {
 
@@ -158,7 +182,6 @@
                 
             }
         }
-
         public function addBranch()
         {
 
@@ -172,6 +195,27 @@
                 $stmt->execute([$bname,$bphone,$baddress]);
                    
                 
+            }
+        }
+        public function applicantProfile()
+        {
+            if(isset($_POST['addp'])){
+
+                $fname = $_POST['fullName'];
+                $pNo = $_POST['phoneNo'];
+                $current_employer = $_POST['current_employer'];
+                $current_job = $_POST['current_job'];
+                $gender = $_POST['gender'];
+                $address = $_POST['address'];
+                $birthmonth = $_POST['birthmonth'];
+                $country = $_POST['country'];
+                $province = $_POST['province'];
+                $city = $_POST['city'];
+                $self_description = $_POST['self_description'];
+
+                $connection = $this->openConnection();
+                $stmt = $connection->prepare("INSERT INTO `applicant_profile`(`fullName`, `phoneNo`, `current_employer`, `current_job`, `gender`,`address`, `birthmonth`, `country`, `province`, `city`, `self_description`) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+                $stmt->execute([$fname,$pNo,$current_employer,$current_job,$gender,$address,$birthmonth,$country,$province,$city,$self_description]);
             }
         }
 

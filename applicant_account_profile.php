@@ -1,5 +1,7 @@
 <?php
-
+    include 'class.php';
+	$App->applicantProfile();
+    $userdetails = $App->get_userdata();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,160 +158,273 @@
 	
 	
 
-<!-- [ Main Content ] start -->
-<div class="pcoded-main-container"> 
-    <div class="pcoded-content"> 
-        <!-- [ breadcrumb ] start -->
-       <div class="page-header">
-            <div class="page-block">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <div class="page-header-title">
-                            <h5 class="m-b-10">Account Profile</h5>
-                        </div>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href=""><i class="fad fa-users"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">Profile</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <!-- [ breadcrumb ] end -->
-        
-     </div>
+
         <!-- [ Main Content ] start -->
-    <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
-    <form class="form form-vertical" action="" method="post" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-sm-4 text-center">
-                <div class="form-group">
-                    <h3 class="text-center">Create Profile</h3>
-                    
-                    <div class="file-loading">
-                        <label for="userprofile">User Profile:</label>
-                        <input id="userprofile" name="userprofile" type="file" required>
-                    </div>
-                </div>
-                
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ Main Content ] start -->
+		    <!-- profile header start -->
+            <div class="user-profile user-card mb-4">
+                <div class="card-header border-0 p-0 pb-0">
+				    <div class="cover-img-block">
+					    <!-- <img src="assets/images/user/avatar.png" alt="" class="img-fluid"> -->
+					    <div class="overlay"></div>
+					    <div class="change-cover">
+						    <div class="dropdown">
+							    <a class="drp-icon dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon feather icon-camera"></i></a>
+							    <div class="dropdown-menu">
+								    <a class="dropdown-item" href="#"><i class="feather icon-upload-cloud mr-2"></i>upload new</a>
+								    <a class="dropdown-item" href="#"><i class="feather icon-image mr-2"></i>from photos</a>
+								    <a class="dropdown-item" href="#"><i class="feather icon-film mr-2"></i> upload video</a>
+								    <a class="dropdown-item" href="#"><i class="feather icon-trash-2 mr-2"></i>remove</a>
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+                <div class="card-body py-0">
+				    <div class="user-about-block m-0">
+					    <div class="row">
+						    <div class="col-md-4 text-center mt-n5">
+							    <div class="change-profile text-center">
+								    <div class="dropdown w-auto d-inline-block">
+									    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <div class="profile-dp">
+											    <div class="position-relative d-inline-block">
+												    <img class="img-radius img-fluid wid-100" src="assets/images/user/avatar.png" alt="User image">
+											    </div>
+											    <div class="overlay">
+												    <span>change</span>
+											    </div>
+										    </div>
+										    <div class="certificated-badge">
+											    <i class="fas fa-certificate text-c-blue bg-icon"></i>
+											    <i class="fas fa-check front-icon text-white"></i>
+										    </div>
+									    </a>
+									    <div class="dropdown-menu">
+										    <a class="dropdown-item" href="#"><i class="feather icon-upload-cloud mr-2"></i>upload new</a>
+										    <a class="dropdown-item" href="#"><i class="feather icon-image mr-2"></i>from photos</a>
+										    <a class="dropdown-item" href="#"><i class="feather icon-shield mr-2"></i>Protact</a>
+										    <a class="dropdown-item" href="#"><i class="feather icon-trash-2 mr-2"></i>remove</a>
+									    </div>
+								    </div>
+							    </div>
+							    <h5 class="mb-1">Applicant User</h5>
+							    <p class="mb-2 text-muted">UI/UX Designer</p>
+						    </div>
+						    <div class="col-md-8 mt-md-4">
+							    <div class="row">
+								    <div class="col-md-6">
+									    <a href="#!" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i class="feather icon-globe mr-2 f-18"></i>www.phoenixcoded.net</a>
+									    <div class="clearfix"></div>
+									    <a href="mailto:demo@domain.com" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i class="feather icon-mail mr-2 f-18"></i>demo@domain.com</a>
+									    <div class="clearfix"></div>
+									    <a href="#!" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i class="feather icon-phone mr-2 f-18"></i>+1 9999-999-999</a>
+								    </div>
+								    <div class="col-md-6">
+									    <div class="media">
+										    <i class="feather icon-map-pin mr-2 mt-1 f-18"></i>
+										    <div class="media-body">
+											    <p class="mb-0 text-muted">4289 Calvin Street</p>
+											    <p class="mb-0 text-muted">Baltimore, near MD Tower Maryland,</p>
+											    <p class="mb-0 text-muted">Maryland (21201)</p>
+										    </div>
+									    </div>
+								    </div>
+							    </div>
+							    <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
+								    <!--<li class="nav-item">
+									    <a class="nav-link text-reset active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="feather icon-home mr-2"></i>Branches</a>
+								    </li>-->
+								    <li class="nav-item">
+									    <a class="nav-link text-reset" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="feather icon-user mr-2"></i>Applicant Profile</a>
+								    </li>
+								
+							    </ul>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
             </div>
-            <div class="col-sm-8">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" name="first_name" id="first_name" required>
+            <!-- profile header end -->
+
+            <!-- profile body start -->
+            <div class="row">
+                <div class="col-md-8 order-md-2">
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card">
+                            <!-- [Showing The applicant profile form] start -->
+                            <div class="card-body d-flex align-items-center justify-content-between">
+								<h5 class="mb-0">Applicant details</h5>
+								<button type="button" class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit" aria-expanded="false" aria-controls="pro-det-edit-1 pro-det-edit-2">
+									<i class="feather icon-edit"></i>
+								</button>
+							</div>
+                            <div class="card-body border-top pro-det-edit collapse show" id="pro-det-edit-1">
+								<form>
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Full Name</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Phone Number</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Current Employer</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Current Job</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Gender</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Address</label>
+										<div class="col-sm-9">
+                                            <p class="mb-0 text-muted"></p>
+											<p class="mb-0 text-muted"></p>
+											<p class="mb-0 text-muted"></p>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Birth Month</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Country</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Province</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">City</label>
+										<div class="col-sm-9">
+											
+										</div>
+                                    </div>
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder">Self Description</label>
+										<div class="col-sm-9">
+											<p class="mb-0 text-muted"></p>
+											<p class="mb-0 text-muted"></p>
+											<p class="mb-0 text-muted"></p>
+										</div>
+									</div>
+								</form>
+							</div>
+                            <!-- [Showing The applicant profile form] end -->
+
+                            <!-- [Filling The Applicant profile form] start -->
+                            <div class="card-body border-top pro-det-edit collapse " id="pro-det-edit-2">
+                                <form action="" method="post">
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="fullName">Full Name</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full Name" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="phoneNo">Phone Number</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="phoneNo" id="phoneNo" placeholder="Phone Number" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="current_employer">Current Employer</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="current_employer" id="current_employer" placeholder="Current Employer" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="current_job">Current Job</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="current_job" id="current_job" placeholder="" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="gender">Gender</label>
+										<div class="col-sm-9">
+											<select class="form-control" id="exampleFormControlSelect1" name="gender" id="gender">
+												<option>Male</option>
+												<option>female</option>
+												<option selected>SELECT</option>
+											</select>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="address">Address</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="address" id="address" placeholder="" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="birthmonth">Birth Month</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="birthmonth" id="birthmonth" placeholder="" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="country">Country</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="country" id="country" placeholder="" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="province">Province</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="province" id="province" placeholder="" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="city">City</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="city" id="city" placeholder="" value="">
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label font-weight-bolder" for="self_description">Self Description</label>
+										<div class="col-sm-9">
+											<textarea class="form-control" name="self_description" id="self_description"> </textarea>
+										</div>
+									</div>
+                                    <div class="form-group row">
+										<label class="col-sm-3 col-form-label"></label>
+										<div class="col-sm-9">
+											<button type="submit" class="btn btn-primary" name="addp">Add Profile</button>
+										</div>
+									</div>
+                                </form>
+                            <!-- [Filling The Applicant profile form] end -->
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" name="last_name" id="last_name" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="current_employer">Current Employer</label>
-                            <input type="text" class="form-control" name="current_employer" id="current_employer" required>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="current_job">Current Job</label>
-                            <input type="text" class="form-control" name="current_job" id="current_job" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="phoneNo">Phone Number</label>
-                            <input type="text" class="form-control" name="phoneNo" id="phoneNo" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group mb-4">
-						<label for="birthmonth">Birth Month</label>
-						<select name="birthmonth" id="birthmonth" class="form-group mb-4">
-							<option value="">--select--</option>
-							<option value="january">January</option>
-							<option value="february">February</option>
-                            <option value="march">March</option>
-                            <option value="april">April</option>
-                            <option value="may">May</option>
-                            <option value="june">June</option>
-                            <option value="july">July</option>
-                            <option value="august">August</option>
-                            <option value="september">September</option>
-                            <option value="october">October</option>
-                            <option value="november">November</option>
-                            <option value="december">December</option>
-						</select>
-					</div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="day">Day</label>
-                            <input type="text" class="form-control" name="day" id="day" required>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="year">Year</label>
-                            <input type="text" class="form-control" name="year" id="year" required>
-                        </div>
-                    </div>
-                    <div class="form-group mb-4">
-						<label for="gender">Gender</label>
-						<select name="gender" id="gender" class="form-group mb-4">
-							<option value="">--select</option>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-						</select>
-					</div>
-                </div>
-                <div class="row">
-                    <div class="form-group mb-4">
-					    <label for="country">Country</label>
-						<select name="country" id="country" class="form-group mb-4">
-							<option value="philippines">Philippines</option>
-						</select>
-					</div>
-                    <div class="form-group mb-4">
-					    <label for="province">Country</label>
-						<select name="province" id="province" class="form-group mb-4">
-							<option value="caraga">Caraga</option>
-						</select>
-					</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="city">City</label>
-                            <input type="text" class="form-control" name="city" id="city" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="self_description">Describe Yourself</label>
-                            <input type="text" class="form-control" name="self_description" id="self_description" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <hr>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Add Profile</button>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
-    <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
+    </div>
         <!-- [ Main Content ] end -->
 </div>
 

@@ -17,9 +17,14 @@ Working Functions of The website:
 Sign In
 Sign Up
 Log Out
+Change Password
+
 Employers can:
-	Under Account Tab, Company Profile 
+	Under Account Tab/Company Profile 
 	(Add Branch Locations in the database, Add Company Profile in the database)
 
+Appllicants can:
+	Under Authentication Tab/Account Profile 
+	(Add Account Profile in the database)
 
 We are continuously updating this website

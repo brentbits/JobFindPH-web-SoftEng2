@@ -20,4 +20,6 @@ Log Out
 Employers can:
 	Under Account Tab, Company Profile 
 	(Add Branch Locations in the database, Add Company Profile in the database)
-	
+
+
+We are continuously updating this website

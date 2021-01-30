@@ -1,9 +1,9 @@
 <?php 
     class MyApp
     {
-        private $server = "mysql:host=localhost;dbname=jobseekerapp";
+        private $server = "mysql:host=localhost;dbname=jobfindph_db";
         private $user = "root";
-        private $pass = "preciousangel24";
+        private $pass = "";
         private $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
         protected $con;
 
@@ -60,9 +60,9 @@
                         echo "You Log in as ".$user['usertype'];
                         header("Location: applicant.php");
                     }
-                    if($user['usertype'] == "employee"){
+                    if($user['usertype'] == "employer"){
                         echo "You Log in as ".$user['usertype'];
-                        header("Location: employee.php");
+                        header("Location: employer.php");
                     }
                     
                 }else{

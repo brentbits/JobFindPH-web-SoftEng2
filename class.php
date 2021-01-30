@@ -40,11 +40,11 @@
             {
             
                 $password = md5($_POST['password']);
-                $username = $_POST['email'];
+                $username = md5($_POST['email']);
                
 
                 $connection = $this->openConnection();
-                $stmt = $connection->prepare("SELECT * FROM user_login WHERE email = ? AND password = ?");
+                $stmt = $connection->prepare("SELECT * FROM user_accounts WHERE email = ? AND password = ?");
                 
                 $stmt->execute([$username,$password]);
                 $user = $stmt->fetch();

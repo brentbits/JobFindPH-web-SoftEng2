@@ -73,7 +73,7 @@
 								<select name="usertype" id="usertype" class="form-group mb-4">
 									<option value="">--select</option>
 									<option value="applicant">Applicant</option>
-									<option value="employee">Employer</option>
+									<option value="employer">Employer</option>
 								</select>
 							</div>
 							<button class="btn btn-primary btn-block mb-4"type="submit" name="add">Sign up</button>

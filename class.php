@@ -116,10 +116,10 @@
 
             if(isset($_POST['add'])){
 
-                $fname = $_POST['first_name'];
-                $lname = $_POST['last_name'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
+                $fname = md5($_POST['first_name']);
+                $lname = md5($_POST['last_name']);
+                $email = md5($_POST['email']);
+                $phone = md5($_POST['phone']);
                 $password = md5($_POST['password']);
                 $usertype = $_POST['usertype'];
                

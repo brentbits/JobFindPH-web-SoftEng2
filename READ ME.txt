@@ -1,0 +1,23 @@
+CSC107 - JKL1
+Group Members:
+Bernasol, Brent G.
+Lubiano, Janrelle
+Cillo, Arnel
+
+
+instructions on opening the website
+
+1. put this folder in the c:/xampp/htdocs
+2. make sure apache server and mysql is running in xampp
+3. open any browser and put this example url: 
+	http://localhost/JobFindPH/index.php#
+
+
+Working Functions of The website:
+Sign In
+Sign Up
+Log Out
+Employers can:
+	Under Account Tab, Company Profile 
+	(Add Branch Locations in the database, Add Company Profile in the database)
+	

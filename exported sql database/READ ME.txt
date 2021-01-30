@@ -1,0 +1,8 @@
+
+instructions in setting up the exported sql database
+
+1. go to localhost/phpmyadmin
+2. create new database with same name as the exported jobfindph_db.sql
+3. select the database and import the file using import tab
+
+

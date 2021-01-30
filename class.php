@@ -60,9 +60,9 @@
                         echo "You Log in as ".$user['usertype'];
                         header("Location: applicant.php");
                     }
-                    if($user['usertype'] == "employee"){
+                    if($user['usertype'] == "employer"){
                         echo "You Log in as ".$user['usertype'];
-                        header("Location: employee.php");
+                        header("Location: employer.php");
                     }
                     
                 }else{
